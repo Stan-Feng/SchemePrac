@@ -7,18 +7,16 @@ function fn (n) {
 }
 
 function iter (f1, f2, f3, count) {
-  var tmp1 = f1;
-  var tmp2 = f2;
-
-  f1 = f1 + f2*2 + f3*3;
-  f2 = tmp1;
-  f3 = tmp2;
-
   count -= 1;
   if (count === 0) {
     return f1;
   } else {
-    return iter(f1, f2, f3, count);
+    return iter(
+      f1 + f2*2 + f3*3,
+      f1,
+      f2,
+      count
+    );
   }
 }
 
