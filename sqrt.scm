@@ -1,8 +1,3 @@
-(define (average x y)
-  (/ (+ x y) 2))
-
-(define (improve guess x)
-  (average guess (/ x guess)))
 
 (define (good-enough? guess x)
   (< (abs (- (square guess) x)) 0.001))
@@ -17,6 +12,9 @@
 
 ;Lexcial Scope Pattern
 (define (sqrt x)
+  (define (average x y)
+    (/ (+ x y) 2)
+  )
   (define (good-enough? guess)
     (< (abs (- (square guess) x)) 0.001))
   (define (improve guess)

@@ -1,0 +1,20 @@
+{
+  "name": "scheme-prac",
+  "version": "0.1.0",
+  "description": "## Building Abstractions with Procedures * Computational Process",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "yolo": "git add --all && git commit -am \"$(date)\"  && git push origin master --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stan-Feng/SchemePrac.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stan-Feng/SchemePrac/issues"
+  },
+  "homepage": "https://github.com/Stan-Feng/SchemePrac#readme"
+}
