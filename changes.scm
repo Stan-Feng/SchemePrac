@@ -1,5 +1,5 @@
-;; Suppose there a total number of cash 'a', the types of cash is 'n'
-;; How many kinds of combinations of changes exist?
+ ;Suppose there a total number of cash 'a', the types of cash is 'n'
+ ;How many kinds of combinations of changes exist?
 (define (count-change amount)
   (cc amount 5)
 )

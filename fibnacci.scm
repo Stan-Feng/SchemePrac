@@ -1,4 +1,3 @@
-;; Tree computational recursion model
 (define (fib n)
   (cond
     ((= n 0) 0)
@@ -12,7 +11,7 @@
   )
 )
 
-;; Iterational
+ Iterational
 (define (fib n)
   (fib-iter 1 0 n)
 )

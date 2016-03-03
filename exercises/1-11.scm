@@ -1,6 +1,6 @@
-;; Define a funciton accepts one parameter 'n'
-;; When n < 3 --> f(n) = n
-;; When n >= 3 --> f(n) = f(n-1) + 2f(n-2) + 3f(n-3)
+ ;Define a funciton accepts one parameter 'n'
+ ;When n < 3 --> f(n) = n
+ ;When n >= 3 --> f(n) = f(n-1) + 2f(n-2) + 3f(n-3)
 
 (define (recu n)
   (if (< n 3)

@@ -1,5 +1,5 @@
-;; Calculate power used a seris of square operations
-;; x--> base, n--> power
+ ;Calculate power used a seris of square operations
+ ;x--> base, n--> power
 (define (fast-expt base n)
   (if (even? base)
     (expt-iter base n)
