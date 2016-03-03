@@ -12,20 +12,12 @@ function iter (f1, f2, f3, count) {
     return f1
   } else {
     return iter(
-      f1 + f2*2 + f3*3,
+      f1 + f2 * 2 + f3 * 3,
       f1,
       f2,
       count
     )
   }
-}
-
-function recu (n) {
-  if (n < 3) {
-    return n
-  }
-
-  return recu(n - 1) + recu(n - 2) * 2 + recu(n - 3) * 3
 }
 
 console.log(fn(5))

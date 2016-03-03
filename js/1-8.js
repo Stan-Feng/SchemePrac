@@ -1,6 +1,5 @@
 'use strict'
 function cube (x) {
-  const square = x => x * x
   const cube = x => x * x * x
   const improve = (x, y) => (x / (y * y) + y * 2) / 3
   const isEnough = (x, guess) => Math.abs(cube(guess) - x) < 0.001

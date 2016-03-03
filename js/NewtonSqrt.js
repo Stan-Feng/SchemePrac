@@ -1,7 +1,7 @@
 'use strict'
 
-function sqrt(x, accuracy) {
-  var accuracy = accuracy || 0.001
+function sqrt (x, accuracy) {
+  accuracy = accuracy || 0.001
 
   const square = x => x * x
   const average = (x, y) => (x + y) / 2
