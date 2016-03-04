@@ -3,27 +3,27 @@
 const table = [
   [1],
   [1, 1]
-]
+];
 
 const isCalculated = (row, col) => {
   if (table[row] && table[row][col]) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
-}
+};
 
 function pascal (row, col) {
   // If column, row out of range return 0
-  if (row === 0 || col === 0 || col > row) return 0
+  if (row === 0 || col === 0 || col > row) return 0;
 
   if (isCalculated(row, col)) {
-    return table[row][col]
+    return table[row][col];
   } else {
-    table[row] = []
-    table[row][col] = pascal(row - 1, col) + pascal(row - 1, col - 1)
-    return table[row][col]
+    table[row] = [];
+    table[row][col] = pascal(row - 1, col) + pascal(row - 1, col - 1);
+    return table[row][col];
   }
 }
 
-module.exports = pascal
+module.exports = pascal;
