@@ -7,13 +7,13 @@
   )
 )
 
-(define (identity x) x)
+
 (define (inc n) (+ n 1))
 (define (cube n) (* n n n))
-
 (define (sum-cubes a b)
   (sum cube a inc b))
 
+(define (identity x) x)
 (define (sum-integers a b)
   (sum identity a inc b))
 
