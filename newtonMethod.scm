@@ -1,0 +1,31 @@
+(define dx 0.0001)
+(define tolarence 0.0001)
+(define (cube x) (* x x x))
+(define (square x) (* x x))
+(define (fixed-point f guess)
+  (let ((next (f guess)))
+    (if (< (abs (- guess (f guess))) tolarence)
+      guess
+      (fixed-point f next)
+    )
+  )
+)
+
+(define (deriv g)
+  (lambda (x)
+    (/ (- (g (+ x dx)) (g x)) dx)
+  )
+)
+
+(define (newton-transform g)
+  (lambda (x)
+    (- x (/ (g x) ((deriv g) x)))
+  )
+)
+
+(define (newton-method g guess)
+  (fixed-point (newton-transform g) guess))
+
+(define (sqrt x)
+  (newton-method (lambda (y) (- (square y) x))
+  1.0))
