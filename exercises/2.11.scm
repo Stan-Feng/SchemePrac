@@ -13,7 +13,6 @@
   )
 )
 
-
 (define (sub-interval x y)
   (make-interval
     (- (bound-lower y) (bound-lower x))
