@@ -1,0 +1,30 @@
+(define (reverse l)
+  (define (iter items result)
+    (if (null? items)
+      result
+      (iter (cdr items) (cons (car items) result))
+    )
+  )
+
+  (iter l (list))
+)
+
+(define (same-parity . data)
+  (define (iter matched? result data)
+    (if (null? data)
+      (reverse result)
+      (if (matched? (car data))
+        (iter matched? (cons (car data) result) (cdr data))
+        (iter matched? result (cdr data))
+      )
+    )
+  )
+
+  (if (even? (car data))
+    (iter (lambda (x) (even? x)) (list) data)
+    (iter (lambda (x) (odd? x)) (list) data)
+  )
+)
+
+(same-parity 1 3 5 6 7 9 12)
+(same-parity 2 6 8 7 4 12)
