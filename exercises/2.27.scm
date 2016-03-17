@@ -3,7 +3,7 @@
 ; Implement deep-reverse, receives a list as paramter return a list
 ; ((1 2) (3 4)) --> ((4 3) (2 1))
 
-; ********** Helpers from exercise 2.18 ********************
+; ********************** Solutions **************************
 (define nil '())
 
 (define (map proc items)
@@ -21,17 +21,16 @@
        (iter (cdr items) (cons (car items) result))))
 
  (iter items nil))
-; ********** Helpers from exercise 2.18 ********************
 
-; ********************** Solutions **************************
 (define (deep-reverse items)
   (if (pair? items)
     (reverse (map deep-reverse items))
     items
   )
 )
-; ********************** Solutions **************************
+
 (deep-reverse x)
+; ********************** Solutions **************************
 
 ; My solution is failed
 ; The key of mastering is always abstraction
