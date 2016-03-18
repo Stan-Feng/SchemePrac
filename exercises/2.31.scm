@@ -1,0 +1,25 @@
+; Please define a procedure to make a deeper abstraction
+; which can define 'square-tree' like this: (define (square-tree tree) (tree-map square tree))
+(define (map proc tree)
+  (if (null? tree)
+    (list)
+    (cons (proc (car tree)) (map proc (cdr tree)))
+  )
+)
+
+(define (tree-map proc tree)
+  (map
+    (lambda (sub-tree)
+      (if (pair? sub-tree)
+        (tree-map proc sub-tree)
+        (proc sub-tree)
+      )
+    )
+  tree)
+)
+
+(define z (list 1 (list 2 (list 3 4) 5) (list 6 7)))
+(define (square x) (* x x))
+(define (square-tree tree)
+  (tree-map square tree))
+(square-tree z) ; (1 (4 (9 16) 25) (36 49))
