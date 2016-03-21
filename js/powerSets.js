@@ -19,7 +19,6 @@ console.log(result1);
 console.log('*****************************');
 console.log(result2);
 
-
 // function subsets (set) {
 //   if (set.length === 0) {
 //     return [[]];
@@ -33,8 +32,6 @@ console.log(result2);
 //     }).concat(rest);
 //   }
 // };
-
-
 
 // Process out of memory
 // var list100 = (new Array(100)).fill('excited').map((v, i) => i);
