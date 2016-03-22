@@ -8,16 +8,6 @@
 //   }
 // }
 
-function reduce (arr, fn, initial) {
-  var total = initial;
-  for (let i = 0; i < arr.length; i++) {
-    total = fn(total, arr[i]);
-  }
-
-  return total;
-}
-
-
 // Thunk, a thunk is a computation hasn't been evaluated yet.
 function add_thunk (x) {
   return function () {
@@ -44,6 +34,7 @@ function add_n (arr) {
     return add_two(add_thunk(arr[0]), add_thunk(arr[1])) + add_n(arr.slice(2));
   }
 }
+console.log(add_n([1, 2, 3, 4, 5, 6]));
 
 function add_n_tail (arr) {
   function iter (result, restArr) {
@@ -60,13 +51,14 @@ function add_n_tail (arr) {
 
   return iter(0, arr);
 }
+console.log(add_n_tail([1, 2, 3, 4, 5]));
 
 function add_map_reduce (arr) {
-  return reduce(arr, function(total, el) {
-    return total += el;
-  }, 0);
+  return arr.reduce(function(accu, curr) {
+    return function () {
+      return add_two(accu, curr);
+    };
+  }, function() { return 0; })();
 }
-
-console.log(add_n([1, 2, 3, 4, 5, 6]));
-console.log(add_n_tail([1, 2, 3, 4, 5]));
-console.log(add_map_reduce([1, 2, 3, 4, 5]));
+var thunk_list = [add_thunk(10), add_thunk(20), add_thunk(24), add_thunk(27)];
+console.log(add_map_reduce(thunk_list));
