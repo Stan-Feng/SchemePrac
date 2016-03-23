@@ -59,11 +59,11 @@ thunk_list = [10, 20, 24, 27].map(add_thunk); // thunk_list could be produced by
 console.log(add_map_reduce(thunk_list));
 
 // Self-implement reduce
-function reduce (operand, initial, sequence) {
+function reduce (operator, initial, sequence) {
   if (sequence.length === 0) {
     return initial;
   } else {
-    return operand(sequence[0], reduce(operand, initial, sequence.slice(1)));
+    return operator(sequence[0], reduce(operator, initial, sequence.slice(1)));
   }
 }
 function add_reduce (sequence) {
