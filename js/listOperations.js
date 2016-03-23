@@ -58,5 +58,19 @@ var thunk_list = [add_thunk(10), add_thunk(20), add_thunk(24), add_thunk(27)];
 thunk_list = [10, 20, 24, 27].map(add_thunk); // thunk_list could be produced by map
 console.log(add_map_reduce(thunk_list));
 
-
-
+// Self-implement reduce
+function reduce (operand, initial, sequence) {
+  if (sequence.length === 0) {
+    return initial;
+  } else {
+    return operand(sequence[0], reduce(operand, initial, sequence.slice(1)));
+  }
+}
+function add_reduce (sequence) {
+  return reduce(function(accu, curr) {
+    return function () {
+      return add_two(accu, curr);
+    };
+  }, function() { return 0; }, sequence)();
+}
+console.log(add_reduce(thunk_list));
