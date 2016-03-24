@@ -1,3 +1,5 @@
+// This exercise from: https://gist.github.com/JeffreyZhao/d131293c3f7db2e552c6
+// created by Jeffrey Zhao
 'use strict';
 Array.prototype.concatAll = function () {
   var results = [];
