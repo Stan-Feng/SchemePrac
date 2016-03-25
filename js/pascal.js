@@ -26,4 +26,41 @@ function pascal (row, col) {
   }
 }
 
+function pascal (n) {
+  var result = [[1], [1, 1]];
+
+  if (n === 1) {
+    return [1];
+  } else if (n === 2) {
+    return result;
+  }
+
+  function iter (curr, result) {
+    if (curr === (n + 1)) {
+      return result;
+    } else {
+      return iter(curr + 1, updateNewLine(result));
+    }
+  }
+
+  return iter(3, result);
+}
+
+function updateNewLine (result) {
+  var bottomLine = result[result.length - 1];
+
+  var mid = enumerateSumPair(bottomLine);
+  var newLine = [1].concat(mid).concat(1);
+  result.push(newLine);
+
+  return result;
+}
+
+function enumerateSumPair (arr) {
+  return arr.slice(0, arr.length - 1)
+    .map((e, i) => e + arr[i + 1]);
+}
+
+console.log(pascal(5));
+
 module.exports = pascal;
