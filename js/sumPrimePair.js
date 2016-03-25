@@ -8,7 +8,7 @@
  *    3. Mapping out to final result
  */
  function makeSumPrimePair (num) {
-   return flatmap(enumerateInterval(1, num), enumerateInterval)
+   return flatmap(enumerateInterval(1, num), i => enumerateInterval(0, i - 1))
      .filter(isSumPrime)
      .map(el => ({ i: el[0], j: el[1], result: el[0] + el[1]}));
  }
@@ -25,7 +25,7 @@ function enumerateInterval (start, end) {
 
 function flatmap (sequence, proc) {
   return sequence
-    .map(i => (proc (0, i - 1)
+    .map(i => (proc(i)
       .map(j => [i, j])))
     .reduce((accu, curr) => (accu.concat(curr)));
 }
