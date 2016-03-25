@@ -31,7 +31,7 @@ function flatmap (sequence, proc) {
 }
 
 function isSumPrime (pair) {
-  const isPrime = function (x) {
+  const isPrime = (x) => {
     for (let i = 2; i < x; i++) {
       if (x % i === 0) {
         return false;
