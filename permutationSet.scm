@@ -1,6 +1,13 @@
 ; Given a set [1, 2, 3] return all permutations of this set
 ; The problem can be reduced of generating fewer elements than S.
 ; In the terminal case, we work on our empty list which means no element.
+(define (accumulate operand initial sequence)
+  (if (null? sequence)
+    initial
+    (operand (car sequence) (accumulate operand initial (cdr sequence)))
+  )
+)
+
 (define (flatmap proc sequence)
   (accumulate append `() (map proc sequence)))
 
