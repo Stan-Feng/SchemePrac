@@ -45,3 +45,63 @@
   (car (partial-tree elements (length elements))))
 
 ; TODO: Implementat union-set and intersection-set as balanced binary tree
+(define (union-set set1 set2)
+  (cond
+    ((null? set1) set2)
+    ((null? set2) set1)
+    (else
+      (let ((entry1 (entry set1))
+            (left-branch1 (left-branch set1))
+            (right-branch1 (right-branch set1))
+            (entry2 (entry set2))
+            (left-branch2 (left-branch set2))
+            (right-branch2 (right-branch set2)))
+        (cond
+          ((= entry1 entry2) (make-tree entry1
+                (union-set left-branch1 left-branch2) (union-set right-branch1 right-branch2)))
+          ((< entry1 entry2) (make-tree entry2
+                (union-set set1 left-branch2) right-branch2))
+          ((> entry1 entry2) (make-tree entry1
+                (union-set left-branch1 set2) right-branch1))
+        )
+      )
+    )
+  )
+)
+
+(union-set (list->tree `(1 3 5)) (list->tree `(2 3 4)))
+
+(define (intersection-set set1 set2)
+  (cond
+    ((null? set1) ())
+    ((null? set2) ())
+    (else
+      (let ((a-entry (entry set1))
+            (a-left-branch (left-branch set1))
+            (a-right-branch (right-branch set1))
+            (b-entry (entry set2))
+            (b-left-branch (left-branch set2))
+            (b-right-branch (right-branch set2)))
+        (cond
+          ((= a-entry b-entry)
+            (make-tree a-entry
+                (intersection-set a-left-branch b-left-branch)
+                (intersection-set a-right-branch b-right-branch)))
+            ((< a-entry b-entry)
+              (union-set
+                (intersection-set a-right-branch
+                  (make-tree b-entry () b-right-branch))
+                (intersection-set
+                  (make-tree a-entry a-left-branch ()) b-left-branch)))
+            ((> a-entry b-entry)
+              (union-set (intersection-set (make-tree a-entry () a-right-branch)
+                            b-right-branch)
+                          (intersection-set a-left-branch
+                            (make-tree b-entry b-left-branch ()))))
+        )
+      )
+    )
+  )
+)
+
+(intersection-set (list->tree `(3 5 10)) (list->tree `(1 2 3 4 5 7)))
