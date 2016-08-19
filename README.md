@@ -31,10 +31,14 @@
 * **Recursive process** refers to process characterized by a **chain of deferred operations.**
 * In the iterative case, the program variables provide a complete description of the state of the process at any point. If we stopped the computation between steps, all we would need to do resume the computation is to supply the interpreter with the values of the program variables. **Not so with the recursive process.**
 
-#### Formulating Abstraction with High-Order Functions
+#### Formulating Abstraction with High-Order Procedures
 * One of the things from a powerful programming language is the ability to build abstractions by assigning names to common patterns and then to work in terms of the abstractions directly.
 * Procedures that manipulate procedures are called **high-order procedures.**
 * Procedures can be considered as General Methods
+* Procedures can be thought as returned values
+* Procedures abstract formulation makes explicit decoupled steps
+* Compound procedures are the crucial abstraction mechanism, because they permit us to express general methods of computing as explicit elements in programming language.
+* Expert programmers know how to **choose the level of abstraction appropriate to** their task.
 
 ## The key of understanding complicate thing is to ignore details
 * Know what not to look at, not to compute, not to think
